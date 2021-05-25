@@ -13,27 +13,21 @@
 
 
 
-Route::get('/login', 'User\LoginController@index')->name('User.Login.Index');
+Route::get('/login', 'User\LoginController@index')->name('user.login.index');
 
-Route::post('/login', 'User\LoginController@login')->name('User.Login');
+Route::post('/login', 'User\LoginController@login')->name('user.login');
 
-Route::get('/logout', 'User\LoginController@logout')->name('User.Logout');
+Route::get('/logout', 'User\LoginController@logout')->name('user.logout');
 
 
 
-Route::get('/', 'User\HomeController@index')->name('Index');
+Route::get('/', 'User\HomeController@index')->name('index');
 
-Route::get('/exam', 'User\ExamController@index')->name('Exam.Index');
+Route::get('/exam', 'User\ExamController@index')->name('exam.index');
 
-Route::get('/exam/show/{model}','User\ExamController@show')->name('Exam.Show');
+Route::get('/exam/show/{model}','User\ExamController@show')->name('exam.show');
 
-Route::get('admin/exam', 'Admin\HomeController@index')->name('Admin.Exam.Index');
 
-Route::get('admin/login', 'Admin\LoginController@index')->name('Admin.Login.Index');
-
-Route::post('admin/login', 'Admin\LoginController@login')->name('Admin.Login');
-
-Route::get('admin/logout', 'Admin\LoginController@logout')->name('Admin.Logout');
 
 Route::group(['prefix' => '/admin','namespace' => 'Admin','as' => 'admin.'],function(){
 
@@ -48,11 +42,15 @@ Route::group(['prefix' => '/admin','namespace' => 'Admin','as' => 'admin.'],func
 			'user' => 'model'
 		]])->except(['show','destroy']);
 
+		Route::resource('exam','ExamController',['parameters' => [
+			'exam' => 'model'
+		]])->except(['show','destroy']);
+
 
 		//Burada Admin Panelindeki silme işlemleri
 		Route::get('user/{model}','UserController@destroy')->name('user.destroy');
 		
-		Route::get('login',function(){return view('Admin.User.Login');});
+		Route::get('login','LoginController@index')->name('login.index');
 
 		Route::post('login','LoginController@login')->name('login');
 

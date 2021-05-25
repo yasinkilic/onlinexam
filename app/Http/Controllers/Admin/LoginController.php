@@ -58,7 +58,7 @@ class LoginController extends Controller
         if (\Auth::guard('panel')->attempt($credentials)) {
 
             Toastr::success('Giriş Başarılı','Başarılı');
-            return redirect()->route('Admin.Exam.Index');
+            return redirect()->route('admin.exam.index');
             
         }
 
@@ -76,7 +76,7 @@ class LoginController extends Controller
         \Auth::logout();
         \Session::flush();
 
-        return redirect()->back();
+        return redirect()->route('admin.login.index');
     }
 
 }

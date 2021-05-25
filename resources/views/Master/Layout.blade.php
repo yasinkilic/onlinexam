@@ -74,14 +74,14 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="{{route('Index')}}"><i class="menu-icon fa fa-laptop"></i>Anasayfa </a>
+                        <a href="{{route('index')}}"><i class="menu-icon fa fa-laptop"></i>Anasayfa </a>
                     </li>
                     @if(!\Auth::guest())
                     <li class="menu-title">Öğrenim Bilgileri</li><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Sınavlar</a>
                         <ul class="sub-menu children dropdown-menu">
-                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('Exam.Index')}}">Sınav Listesi</a></li>
+                            <li><i class="menu-icon fa fa-th"></i><a href="{{route('exam.index')}}">Sınav Listesi</a></li>
                         </ul>
                     </li>
                     @endif
@@ -111,7 +111,7 @@
                         </a>
 
                         <div class="user-menu dropdown-menu">
-                            <a class="nav-link" href="{{route('User.Logout')}}"><i class="fa fa-power -off"></i>Çıkış Yap</a>
+                            <a class="nav-link" href="{{route('user.logout')}}"><i class="fa fa-power -off"></i>Çıkış Yap</a>
                         </div>
                     </div>
                     @endif

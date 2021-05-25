@@ -6,7 +6,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Oluştur</h6>
     </div>
     <div class="card-body">
-        <form action="{{route('Admin.User.Store')}}" class="contact_form_box" method="post">
+        <form action="{{route('admin.user.store')}}" class="contact_form_box" method="post">
             @csrf
             <div class="row">
                 <div class="col-lg-6">

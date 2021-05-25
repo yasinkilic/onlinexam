@@ -15,7 +15,7 @@ class HomeController extends Controller
 	
     public function index()
     {
-        return view('Exam.Index');
+        return view('exam.index');
     }
 
 

@@ -15,13 +15,13 @@ class ExamController extends Controller
 
     public function index(){
 
-    	return view('Exam.Index');
+    	return view('exam.index');
 
     }
 
     public function show(){
     	
-    	return view('Exam.Show');
+    	return view('exam.show');
 
     }
 }

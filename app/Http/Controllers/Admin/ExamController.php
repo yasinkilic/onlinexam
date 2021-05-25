@@ -5,11 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Models\User as Model;
+use App\Models\Exam as Model;
 
 use Toastr;
 
-class UserController extends Controller
+class ExamController extends Controller
 {
   /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class UserController extends Controller
     public function index()
     {
       $customers = Model::all();
-      return view('Admin.User.Index',compact('customers'));
+      return view('Admin.Exam.Index',compact('customers'));
     }
 
     /**
@@ -29,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-       return view('Admin.User.Create');
+       return view('Admin.Exam.Create');
     }
 
     /**
@@ -47,30 +47,20 @@ class UserController extends Controller
             'password' 	=> 'required'
           ]);
 
-        $user = new Model;
+        $customer= new Model;
         
-        $user->fill($request->except('password'));
+        $customer->fill($request->except('password'));
 
-        $user->password = $request->password;
+        $customer->password = $request->password;
         
-       	if($user->save()){
+       	if($customer->save()){
           \Toastr::success('Başarıyla Kaydedildi','Başarılı');
         }else{\Toastr::error('Lütfen Tekrar Deneyin','Hata');}
         
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.exam.index');
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Model $model)
-    {
-        return view('Admin.User.Show')->with('model',$model);
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -80,7 +70,7 @@ class UserController extends Controller
      */
     public function edit(Model $model)
     {
-        return view('Admin.User.Edit')->with('model',$model);
+        return view('Admin.Exam.Edit')->with('model',$model);
     }
 
     /**
@@ -91,15 +81,13 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Model $model,Request $request)
-    {   
+    {
+         $password = \Hash::make($request->password);
+        $model->fill(['name'=>$request->name,'email'=>$request->email,'password'=>$password]);
 
-        if (isset($request->password)) {
-          $model->password = \Hash::make($request->password);
-        }
-
-        $model->fill(['name'=>$request->name,'email'=>$request->email]);
-
-        
+        if ($request['password']!=null||$request['password']!='') {
+          $model->password = \Hash::make($request['password']);
+      }
       
       if($model->save()){
 
@@ -109,7 +97,7 @@ class UserController extends Controller
         \Toastr::error('Güncelleme Başarısız','Başarısız');
       }
 
-        return redirect()->route('admin.user.index');
+        return redirect()->route('admin.exam.index');
     }
 
     /**

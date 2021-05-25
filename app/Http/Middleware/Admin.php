@@ -27,7 +27,7 @@ class Admin
 
               Toastr::error('Bu Sayfayı Görme Yetkiniz Yok!!','Hata');
 
-              return redirect()->route('Admin.Login.Index');
+              return redirect()->route('admin.login.index');
 
            }
 

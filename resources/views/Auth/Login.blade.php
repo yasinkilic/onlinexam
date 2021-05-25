@@ -1,6 +1,6 @@
 @extends('Master.Layout')
 @section('content')
-<form action="{{route('User.Login')}}" method="post">
+<form action="{{route('user.login')}}" method="post">
 
 	@csrf
 

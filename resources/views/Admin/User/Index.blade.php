@@ -13,8 +13,6 @@
                                 <th width="1%">#</th>
                                 <th>İsim</th>
                                 <th>Email</th>
-                                <th>Telefon Numarası</th>
-                                <th>Durum</th>
                                 <th width="20%">İşlemler</th>
                                 
                             </tr>
@@ -40,11 +38,9 @@
          },
         "ajax": "{{ route('admin.user.userlist') }}",
         "columns": [
-            { "data": "id" },
+            { "data": "user_id" },
             { "data": "name" },
             { "data": "email" },
-            { "data": "phone_number" },
-            { "data": "status"},
             { "data": "İşlemler" }
 
 

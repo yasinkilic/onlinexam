@@ -53,7 +53,7 @@ class LoginController extends Controller
 
         if (\Auth::guard()->attempt($credentials)) {
             Toastr::success('Giriş Başarılı','Başarılı');
-            return redirect()->route('Exam.Index');
+            return redirect()->route('exam.index');
         }
 
         else{

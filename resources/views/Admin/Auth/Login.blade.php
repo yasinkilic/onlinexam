@@ -1,6 +1,6 @@
 @extends('Admin.Auth.Layout')
 @section('content')
-<form action="{{route('Admin.Login')}}" method="post">
+<form action="{{route('admin.login')}}" method="post">
 
 	@csrf
 

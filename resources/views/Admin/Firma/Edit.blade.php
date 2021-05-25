@@ -9,7 +9,7 @@
         <h6 class="m-0 font-weight-bold text-primary">Düzenle</h6>
     </div>
     <div class="card-body">
-        <form action="{{route('Admin.firmalar.update',$model)}}" class="contact_form_box" method="post">
+        <form action="{{route('admin.firmalar.update',$model)}}" class="contact_form_box" method="post">
             @csrf
             {{ method_field('PUT') }}
             <div class="row">
